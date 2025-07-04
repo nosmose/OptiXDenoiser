@@ -34,18 +34,29 @@ set(OPTIX_ROOT_DIR "" CACHE PATH "Path to OptiX SDK")
 
 # Try to find OptiX in common locations if not specified
 if(NOT OPTIX_ROOT_DIR)
-    foreach(optix_path 
-            "/opt/NVIDIA-OptiX-SDK-9.0.0-linux64-x86_64"
-            "/opt/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64"
-            "/opt/NVIDIA-OptiX-SDK-7.0.0-linux64-x86_64"
-            "/rdo/software/rez/packages/optix/7.3.0"
-            "/rdo/software/rez/packages/optix/7.0.0")
-        if(EXISTS "${optix_path}/include/optix.h")
-            set(OPTIX_ROOT_DIR "${optix_path}")
-            message(STATUS "Found OptiX at: ${OPTIX_ROOT_DIR}")
-            break()
-        endif()
-    endforeach()
+    # First try the known path provided by user
+    set(OPTIX_ROOT_DIR "/software/nvidia/optiX/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64")
+    
+    if(NOT EXISTS "${OPTIX_ROOT_DIR}/include/optix.h")
+        # If the known path doesn't work, try other common locations
+        set(OPTIX_ROOT_DIR "")
+        foreach(optix_path 
+                "/software/nvidia/optiX/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64"
+                "/opt/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64"
+                "/software/nvidia/optiX/NVIDIA-OptiX-SDK-9.0.0-linux64-x86_64"
+                "/opt/NVIDIA-OptiX-SDK-9.0.0-linux64-x86_64"
+                "/opt/NVIDIA-OptiX-SDK-7.0.0-linux64-x86_64"
+                "/rdo/software/rez/packages/optix/7.3.0"
+                "/rdo/software/rez/packages/optix/7.0.0")
+            if(EXISTS "${optix_path}/include/optix.h")
+                set(OPTIX_ROOT_DIR "${optix_path}")
+                message(STATUS "Found OptiX at: ${OPTIX_ROOT_DIR}")
+                break()
+            endif()
+        endforeach()
+    else()
+        message(STATUS "Using provided OptiX SDK path: ${OPTIX_ROOT_DIR}")
+    endif()
 endif()
 
 # Check if Nuke paths exist
@@ -204,6 +215,9 @@ set_target_properties(OptiXDenoiser PROPERTIES
     PREFIX ""  # Remove 'lib' prefix
     SUFFIX ".so"
     OUTPUT_NAME "OptiXDenoiser"
+    INSTALL_RPATH "${CUDA_LIBRARY_DIR}"
+    BUILD_WITH_INSTALL_RPATH TRUE
+    INSTALL_RPATH_USE_LINK_PATH TRUE
 )
 
 # Link libraries

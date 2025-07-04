@@ -1,0 +1,7 @@
+/mnt/users/jhery/Documents/code/OptiXDenoiser/build_nuke14.1/CMakeFiles/OptiXDenoiser.dir
+/mnt/users/jhery/Documents/code/OptiXDenoiser/build_nuke14.1/CMakeFiles/edit_cache.dir
+/mnt/users/jhery/Documents/code/OptiXDenoiser/build_nuke14.1/CMakeFiles/rebuild_cache.dir
+/mnt/users/jhery/Documents/code/OptiXDenoiser/build_nuke14.1/CMakeFiles/list_install_components.dir
+/mnt/users/jhery/Documents/code/OptiXDenoiser/build_nuke14.1/CMakeFiles/install.dir
+/mnt/users/jhery/Documents/code/OptiXDenoiser/build_nuke14.1/CMakeFiles/install/local.dir
+/mnt/users/jhery/Documents/code/OptiXDenoiser/build_nuke14.1/CMakeFiles/install/strip.dir

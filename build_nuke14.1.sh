@@ -117,8 +117,10 @@ fi
 # Check OptiX installation
 echo -e "${YELLOW}Checking OptiX installation...${NC}"
 OPTIX_PATHS=(
-    "/opt/NVIDIA-OptiX-SDK-9.0.0-linux64-x86_64"
+    "/software/nvidia/optiX/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64"
     "/opt/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64"
+    "/software/nvidia/optiX/NVIDIA-OptiX-SDK-9.0.0-linux64-x86_64"
+    "/opt/NVIDIA-OptiX-SDK-9.0.0-linux64-x86_64"
     "/opt/NVIDIA-OptiX-SDK-7.0.0-linux64-x86_64"
     "/rdo/software/rez/packages/optix/7.3.0"
     "/rdo/software/rez/packages/optix/7.0.0"

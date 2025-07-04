@@ -1,0 +1,1 @@
+/mnt/users/jhery/Documents/code/OptiXDenoiser/install_nuke14.1/plugins/OptiXDenoiser.so
